@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Media</title>
+</head>
+<body>
+    <h1>Available Media for Members</h1>
+
+    <h2>Books</h2>
+    <ul>
+        {% for book in books %}
+            <li>{{ book.name }} - Author: {{ book.author }}</li>
+        {% empty %}
+            <li>No books available.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>CDs</h2>
+    <ul>
+        {% for cd in cds %}
+            <li>{{ cd.name }} - Artist: {{ cd.artist }}</li>
+        {% empty %}
+            <li>No CDs available.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>DVDs</h2>
+    <ul>
+        {% for dvd in dvds %}
+            <li>{{ dvd.name }} - Director: {{ dvd.director }}</li>
+        {% empty %}
+            <li>No DVDs available.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Board Games</h2>
+    <ul>
+        {% for boardgame in boardgames %}
+            <li>{{ boardgame.name }} - Creator: {{ boardgame.creator }}</li>
+        {% empty %}
+            <li>No board games available.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
