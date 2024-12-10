@@ -99,9 +99,7 @@ Mentionnez comment exécuter les tests pour valider le bon fonctionnement :
    python manage.py test
 
 Les résultats des tests s'afficheront dans le terminal.
-YAML
 
-Copier le code
 
 ---
 
@@ -133,3 +131,32 @@ Projet de gestion de médiathèque développé avec Django. Ce projet permet de 
 ## Lancement
 - Lancez le serveur : `python manage.py runserver`
 - Accédez à : `http://127.0.0.1:8000`
+
+## Installation des Dépendances
+
+1. Clonez le dépôt :
+   ```bash
+   git clone https://github.com/sezer92/library_management.git
+Créez un environnement virtuel et activez-le :
+
+Sous windows :
+
+python -m venv .venv
+.venv\Scripts\activate
+Sous Linux/macOS :
+
+python3 -m venv .venv
+source .venv/bin/activate
+Installer les dépendances nécessaires :
+
+
+pip install -r requirements.txt
+Lancez le serveur :
+
+
+python manage.py runserver
+YAML
+
+
+
+Avec ce fichier `requirements.txt` et des instructions claires, votre projet sera bien documenté et p
