@@ -1,162 +1,111 @@
-# Library Management
+# Gestion de la médiathèque
 
-Projet de gestion de médiathèque développé avec Django. 
+Ce projet est une application Django pour gérer les ressources d'une médiathèque, incluant des fonctionnalités telles que la gestion des utilisateurs, des médias et des réservations.
 
-## Fonctionnalités
-- Gestion des membres.
-- Gestion des médias.
-- Emprunts et retours.
-- Notifications automatiques.
+---
 
-## Installation
-## Cloner le Dépôt
+## **Prérequis**
 
-1. Assurez-vous que Git est installé sur votre machine.
-2. Exécutez la commande suivante pour cloner le dépôt :
-   ```bash
-   git clone https://github.com/sezer92/library_management.git
+Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur votre machine :
 
-## Accédez au dossier du projet :
+1. **Python** (version 3.10 ou supérieure)
+2. **Git**
+3. **PostgreSQL** (avec `pg_config` configuré pour fonctionner avec `psycopg2`)
+4. **Microsoft Visual C++ Build Tools** (pour compiler certaines dépendances Python sous Windows)
 
-cd library_management
+---
+
+## **Étapes d'installation**
+
+### **1. Cloner le dépôt**
+Clonez le dépôt GitHub sur votre machine locale :
+
+git clone <URL_DU_DEPOT>
+cd PycharmProjects/PythonProject
 
 
 ---
 
-### 2. **Installer les Prérequis**
-Expliquez comment installer les dépendances Python :
-```markdown
-## Installer les Prérequis
-
-1. Assurez-vous que Python (version 3.10 ou supérieure) et pip sont installés.
-2. Créez et activez un environnement virtuel :
-   - Sous Windows :
-     ```bash
-     python -m venv .venv
-     .venv\Scripts\activate
-     ```
-   - Sous Linux/macOS :
-     ```bash
-     python3 -m venv .venv
-     source .venv/bin/activate
-     ```
-3. Installez les dépendances du projet :
-   ```bash
-   pip install -r requirements.txt
-
-
----
-
-### 3. **Configurer la Base de Données**
-Ajoutez des étapes claires pour configurer PostgreSQL ou une base de données alternative :
-```markdown
-## Configurer la Base de Données
-
-1. Installez PostgreSQL sur votre machine.
-2. Créez une base de données nommée `library_management`.
-3. Modifiez le fichier `settings.py` pour inclure les détails de connexion à la base de données :
-   ```python
-   DATABASES = {
-       'default': {
-           'ENGINE': 'django.db.backends.postgresql',
-           'NAME': 'library_management',
-           'USER': 'postgres',
-           'PASSWORD': 'votre_mot_de_passe',
-           'HOST': 'localhost',
-           'PORT': '5432',
-       }
-   }
-## Appliquez les migrations :
-
-python manage.py migrate
-
-
----
-
-### 4. **Lancer le Serveur**
-Ajoutez les étapes pour démarrer le serveur Django :
-```markdown
-## Lancer le Serveur
-
-1. Lancez le serveur local Django :
-   ```bash
-   python manage.py runserver
-
-Accédez à l'application dans votre navigateur à l'adresse suivante :
-
-http://127.0.0.1:8000
-
-
----
-
-### 5. **Ajouter des Instructions pour Tester**
-Mentionnez comment exécuter les tests pour valider le bon fonctionnement :
-```markdown
-## Exécuter les Tests
-
-1. Exécutez les tests unitaires avec la commande suivante :
-   ```bash
-   python manage.py test
-
-Les résultats des tests s'afficheront dans le terminal.
-
-
----
-
-### 6. **Fichier README.md**
-Ajoutez toutes ces informations dans un fichier `README.md` dans le dossier racine de votre projet. Voici un exemple structuré :
-
-```markdown
-# Library Management
-
-Projet de gestion de médiathèque développé avec Django. Ce projet permet de gérer les emprunts, les médias, et les membres.
-
-## Fonctionnalités
-- Gestion des membres : ajout, suppression, blocage.
-- Gestion des médias : livres, CDs, DVDs, jeux de plateau.
-- Emprunts et retours.
-- Notifications automatiques pour les retards.
-
-## Prérequis
-- Python 3.10 ou supérieur
-- PostgreSQL
-- Git
-
-## Installation
-1. Clonez le projet : `git clone https://github.com/sezer92/library_management.git`
-2. Accédez au projet : `cd library_management`
-3. Installez les dépendances : `pip install -r requirements.txt`
-4. Configurez la base de données selon les instructions ci-dessus.
-
-## Lancement
-- Lancez le serveur : `python manage.py runserver`
-- Accédez à : `http://127.0.0.1:8000`
-
-## Installation des Dépendances
-
-1. Clonez le dépôt :
-   ```bash
-   git clone https://github.com/sezer92/library_management.git
-Créez un environnement virtuel et activez-le :
-
-Sous windows :
+### **2. Créer et activer un environnement virtuel**
+Créez un environnement virtuel pour isoler les dépendances du projet :
 
 python -m venv .venv
-.venv\Scripts\activate
-Sous Linux/macOS :
 
-python3 -m venv .venv
-source .venv/bin/activate
-Installer les dépendances nécessaires :
+Activez l'environnement virtuel :
+- **Windows** :
 
+  .venv\Scripts\activate
 
+- **Mac/Linux** :
+ 
+  source .venv/bin/activate
+  ```
+
+---
+
+### **3. Installer les dépendances**
+Installez toutes les dépendances nécessaires à partir du fichier `requirements.txt` :
+
+cd library_management
 pip install -r requirements.txt
-Lancez le serveur :
 
+pour lancer le projet 
+cd library_management
+python manage.py runserver
+
+
+---
+
+### **4. Configurer la base de données**
+
+Assurez-vous que PostgreSQL est installé et configuré. Créez une nouvelle base de données pour le projet :
+```sql
+CREATE DATABASE library_management;
+```
+
+Mettez à jour le fichier `settings.py` pour y inclure les informations de connexion à la base de données :
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'library_management',
+        'USER': 'postgres',
+        'PASSWORD': 'MyS3cureP@ssw0rd',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+```
+
+---
+
+### **5. Appliquer les migrations**
+Exécutez les migrations pour initialiser la base de données :
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+---
+
+### **6. Lancer le serveur**
+Démarrez le serveur de développement local :
 
 python manage.py runserver
-YAML
 
 
+Accédez à l'application dans votre navigateur à l'adresse :
+```
+http://127.0.0.1:8000
+```
 
-Avec ce fichier `requirements.txt` et des instructions claires, votre projet sera bien documenté et p
+---
+
+## **Résolution des problèmes courants**
+
+### **Erreur : `pg_config` introuvable**
+Installez PostgreSQL et ajoutez le chemin vers `pg_config` dans votre variable d'environnement `PATH`.
+
+### **Erreur : `Microsoft Visual C++ 14.0` requis**
+Installez les [Microsoft Visual C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
+
