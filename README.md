@@ -11,7 +11,7 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 1. **Python** (version 3.10 ou supérieure)
 2. **Git**
 3. **PostgreSQL** (avec `pg_config` configuré pour fonctionner avec `psycopg2`)
-4. **Microsoft Visual C++ Build Tools** (pour compiler certaines dépendances Python sous Windows)
+4. **Microsoft Visual C++ Build Tools** (pour compiler certaines dépendances Python sous Windows) cocher "développement de bureau avec C++" !
 
 ---
 
