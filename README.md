@@ -1,162 +1,119 @@
-# Library Management
+# Gestion de la médiathèque
 
-Projet de gestion de médiathèque développé avec Django. 
+Ce projet est une application Django pour gérer les ressources d'une médiathèque, incluant des fonctionnalités telles que la gestion des utilisateurs, des médias et des réservations.
 
-## Fonctionnalités
-- Gestion des membres.
-- Gestion des médias.
-- Emprunts et retours.
-- Notifications automatiques.
 
-## Installation
-## Cloner le Dépôt
 
-1. Assurez-vous que Git est installé sur votre machine.
-2. Exécutez la commande suivante pour cloner le dépôt :
-   ```bash
-   git clone https://github.com/sezer92/library_management.git
+## **Prérequis**
 
-## Accédez au dossier du projet :
+Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur votre machine :
 
-cd library_management
+1. **Python** (version 3.10 ou supérieure)
+2. **Git**
 
+Aucun prérequis supplémentaire n'est nécessaire grâce à l'utilisation de SQLite comme base de données.
+
+
+
+## **Étapes d'installation**
+
+### **1. Cloner le dépôt**
+Clonez le dépôt GitHub sur votre machine locale :
+
+git clone <URL_DU_DEPOT>
+cd PythonProject
+
+
+### **2. Créer et activer un environnement virtuel**
+Créez un environnement virtuel pour isoler les dépendances du projet :
+
+python -m venv .venv
+
+
+Activez l'environnement virtuel :
+- **Windows** :
+ 
+  .venv\Scripts\activate
+
+- **Mac/Linux** :
+
+  source .venv/bin/activate
+
+
+### **3. Installer les dépendances**
+Installez toutes les dépendances nécessaires à partir du fichier `requirements.txt` :
+```bash
+pip install -r requirements.txt
+
+
+### **4. Configurer la base de données**
+
+Le projet utilise une base de données SQLite par défaut. Aucun prérequis supplémentaire n'est nécessaire. Si vous devez réinitialiser la base de données, supprimez le fichier `db.sqlite3` et relancez les migrations (voir étape 5).
 
 ---
 
-### 2. **Installer les Prérequis**
-Expliquez comment installer les dépendances Python :
-```markdown
-## Installer les Prérequis
+### **5. Appliquer les migrations**
+Exécutez les migrations pour initialiser la base de données :
 
-1. Assurez-vous que Python (version 3.10 ou supérieure) et pip sont installés.
-2. Créez et activez un environnement virtuel :
-   - Sous Windows :
-     ```bash
-     python -m venv .venv
-     .venv\Scripts\activate
-     ```
-   - Sous Linux/macOS :
-     ```bash
-     python3 -m venv .venv
-     source .venv/bin/activate
-     ```
-3. Installez les dépendances du projet :
-   ```bash
-   pip install -r requirements.txt
-
-
----
-
-### 3. **Configurer la Base de Données**
-Ajoutez des étapes claires pour configurer PostgreSQL ou une base de données alternative :
-```markdown
-## Configurer la Base de Données
-
-1. Installez PostgreSQL sur votre machine.
-2. Créez une base de données nommée `library_management`.
-3. Modifiez le fichier `settings.py` pour inclure les détails de connexion à la base de données :
-   ```python
-   DATABASES = {
-       'default': {
-           'ENGINE': 'django.db.backends.postgresql',
-           'NAME': 'library_management',
-           'USER': 'postgres',
-           'PASSWORD': 'votre_mot_de_passe',
-           'HOST': 'localhost',
-           'PORT': '5432',
-       }
-   }
-## Appliquez les migrations :
-
+python manage.py makemigrations
 python manage.py migrate
 
 
----
+### **6. Charger le jeu d'essais**
+Un jeu d'essais est inclus pour tester le projet. Chargez-le avec la commande suivante :
 
-### 4. **Lancer le Serveur**
-Ajoutez les étapes pour démarrer le serveur Django :
-```markdown
-## Lancer le Serveur
+python manage.py loaddata fixtures.json
 
-1. Lancez le serveur local Django :
-   ```bash
-   python manage.py runserver
 
-Accédez à l'application dans votre navigateur à l'adresse suivante :
+### **7. Lancer le serveur**
+Démarrez le serveur de développement local :
+
+python manage.py runserver
+
+
+Accédez à l'application dans votre navigateur à l'adresse :
 
 http://127.0.0.1:8000
 
 
+
+
+## **Structure du projet**
+
+Voici la structure des fichiers principaux :
+```
+PythonProject/
+├── library_management/
+│   ├── manage.py
+│   ├── requirements.txt
+│   ├── db.sqlite3
+│   ├── fixtures.json
+│   ├── ...
+├── .venv/
+└── README.md
+```
+
 ---
 
-### 5. **Ajouter des Instructions pour Tester**
-Mentionnez comment exécuter les tests pour valider le bon fonctionnement :
-```markdown
-## Exécuter les Tests
+## **Stratégie de tests**
 
-1. Exécutez les tests unitaires avec la commande suivante :
-   ```bash
-   python manage.py test
+### **1. Tests unitaires**
+Les tests unitaires sont implémentés pour vérifier les fonctionnalités principales du projet. Ils sont localisés dans le fichier `tests.py` et couvrent les cas suivants :
+- Création d'un membre.
+- Limite des emprunts pour un membre.
+- Mise à jour des informations d'un membre.
+- Suppression d'un membre.
 
-Les résultats des tests s'afficheront dans le terminal.
+Pour exécuter les tests unitaires, utilisez la commande suivante :
 
-
----
-
-### 6. **Fichier README.md**
-Ajoutez toutes ces informations dans un fichier `README.md` dans le dossier racine de votre projet. Voici un exemple structuré :
-
-```markdown
-# Library Management
-
-Projet de gestion de médiathèque développé avec Django. Ce projet permet de gérer les emprunts, les médias, et les membres.
-
-## Fonctionnalités
-- Gestion des membres : ajout, suppression, blocage.
-- Gestion des médias : livres, CDs, DVDs, jeux de plateau.
-- Emprunts et retours.
-- Notifications automatiques pour les retards.
-
-## Prérequis
-- Python 3.10 ou supérieur
-- PostgreSQL
-- Git
-
-## Installation
-1. Clonez le projet : `git clone https://github.com/sezer92/library_management.git`
-2. Accédez au projet : `cd library_management`
-3. Installez les dépendances : `pip install -r requirements.txt`
-4. Configurez la base de données selon les instructions ci-dessus.
-
-## Lancement
-- Lancez le serveur : `python manage.py runserver`
-- Accédez à : `http://127.0.0.1:8000`
-
-## Installation des Dépendances
-
-1. Clonez le dépôt :
-   ```bash
-   git clone https://github.com/sezer92/library_management.git
-Créez un environnement virtuel et activez-le :
-
-Sous windows :
-
-python -m venv .venv
-.venv\Scripts\activate
-Sous Linux/macOS :
-
-python3 -m venv .venv
-source .venv/bin/activate
-Installer les dépendances nécessaires :
-
-
-pip install -r requirements.txt
-Lancez le serveur :
-
-
-python manage.py runserver
-YAML
+python manage.py test
 
 
 
-Avec ce fichier `requirements.txt` et des instructions claires, votre projet sera bien documenté et p
+### **2. Scénarios de test manuels**
+Voici quelques scénarios à vérifier manuellement :
+- Créer, modifier, et supprimer un membre via l'interface utilisateur.
+- Ajouter et emprunter des médias.
+- Vérifier que les membres bloqués ne peuvent pas emprunter.
+- Tester les API REST via un outil comme Postman ou cURL.
+
