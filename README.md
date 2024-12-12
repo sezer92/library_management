@@ -2,7 +2,7 @@
 
 Ce projet est une application Django pour gérer les ressources d'une médiathèque, incluant des fonctionnalités telles que la gestion des utilisateurs, des médias et des réservations.
 
----
+
 
 ## **Prérequis**
 
@@ -10,10 +10,10 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 
 1. **Python** (version 3.10 ou supérieure)
 2. **Git**
-3. **PostgreSQL** (avec `pg_config` configuré pour fonctionner avec `psycopg2`)
-4. **Microsoft Visual C++ Build Tools** (pour compiler certaines dépendances Python sous Windows) cocher "développement de bureau avec C++" !
 
----
+Aucun prérequis supplémentaire n'est nécessaire grâce à l'utilisation de SQLite comme base de données.
+
+
 
 ## **Étapes d'installation**
 
@@ -21,91 +21,99 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 Clonez le dépôt GitHub sur votre machine locale :
 
 git clone <URL_DU_DEPOT>
-cd PycharmProjects/PythonProject
+cd PythonProject
 
-
----
 
 ### **2. Créer et activer un environnement virtuel**
 Créez un environnement virtuel pour isoler les dépendances du projet :
 
 python -m venv .venv
 
+
 Activez l'environnement virtuel :
 - **Windows** :
-
+ 
   .venv\Scripts\activate
 
 - **Mac/Linux** :
- 
-  source .venv/bin/activate
-  ```
 
----
+  source .venv/bin/activate
+
 
 ### **3. Installer les dépendances**
 Installez toutes les dépendances nécessaires à partir du fichier `requirements.txt` :
-
-cd library_management
+```bash
 pip install -r requirements.txt
 
-pour lancer le projet 
-cd library_management
-python manage.py runserver
-
-
----
 
 ### **4. Configurer la base de données**
 
-Assurez-vous que PostgreSQL est installé et configuré. Créez une nouvelle base de données pour le projet :
-```sql
-CREATE DATABASE library_management;
-```
-
-Mettez à jour le fichier `settings.py` pour y inclure les informations de connexion à la base de données :
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'library_management',
-        'USER': 'postgres',
-        'PASSWORD': 'MyS3cureP@ssw0rd',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-```
+Le projet utilise une base de données SQLite par défaut. Aucun prérequis supplémentaire n'est nécessaire. Si vous devez réinitialiser la base de données, supprimez le fichier `db.sqlite3` et relancez les migrations (voir étape 5).
 
 ---
 
 ### **5. Appliquer les migrations**
 Exécutez les migrations pour initialiser la base de données :
-```bash
+
 python manage.py makemigrations
 python manage.py migrate
-```
 
----
 
-### **6. Lancer le serveur**
+### **6. Charger le jeu d'essais**
+Un jeu d'essais est inclus pour tester le projet. Chargez-le avec la commande suivante :
+
+python manage.py loaddata fixtures.json
+
+
+### **7. Lancer le serveur**
 Démarrez le serveur de développement local :
 
 python manage.py runserver
 
 
 Accédez à l'application dans votre navigateur à l'adresse :
-```
+
 http://127.0.0.1:8000
+
+
+
+
+## **Structure du projet**
+
+Voici la structure des fichiers principaux :
+```
+PythonProject/
+├── library_management/
+│   ├── manage.py
+│   ├── requirements.txt
+│   ├── db.sqlite3
+│   ├── fixtures.json
+│   ├── ...
+├── .venv/
+└── README.md
 ```
 
 ---
 
-## **Résolution des problèmes courants**
+## **Stratégie de tests**
 
-### **Erreur : `pg_config` introuvable**
-Installez PostgreSQL et ajoutez le chemin vers `pg_config` dans votre variable d'environnement `PATH`.
+### **1. Tests unitaires**
+Les tests unitaires sont implémentés pour vérifier les fonctionnalités principales du projet. Ils sont localisés dans le fichier `tests.py` et couvrent les cas suivants :
+- Création d'un membre.
+- Limite des emprunts pour un membre.
+- Mise à jour des informations d'un membre.
+- Suppression d'un membre.
 
-### **Erreur : `Microsoft Visual C++ 14.0` requis**
-Installez les [Microsoft Visual C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
+Pour exécuter les tests unitaires, utilisez la commande suivante :
+
+python manage.py test
+
+
+
+### **2. Scénarios de test manuels**
+Voici quelques scénarios à vérifier manuellement :
+- Créer, modifier, et supprimer un membre via l'interface utilisateur.
+- Ajouter et emprunter des médias.
+- Vérifier que les membres bloqués ne peuvent pas emprunter.
+- Tester les API REST via un outil comme Postman ou cURL.
 
