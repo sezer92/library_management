@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Member, Book, Cd, Dvd
-from .serializers import MemberSerializer, BookSerializer, CdSerializer, DvdSerializer
+from bibliothecaire.models import Member, Book, Cd, Dvd
+from bibliothecaire.serializers import MemberSerializer, BookSerializer, CdSerializer, DvdSerializer
 
 class MemberViewSet(viewsets.ModelViewSet):
     queryset = Member.objects.all()

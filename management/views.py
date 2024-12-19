@@ -4,7 +4,7 @@ from .models import Member, Book, Cd, Dvd, BoardGame
 from django.contrib import messages
 import logging
 from rest_framework import viewsets
-from .serializers import MemberSerializer, BookSerializer, CdSerializer, DvdSerializer
+from bibliothecaire.serializers import MemberSerializer, BookSerializer, CdSerializer, DvdSerializer
 from celery import shared_task
 
 # Configure logging

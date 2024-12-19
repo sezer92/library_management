@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Membres</title>
+</head>
+<body>
+<h1>Liste des membres</h1>
+<ul>
+    {% for member in members %}
+        <li>
+            {{ member.name }} - {{ member.blocked|yesno:"Bloqué,Non bloqué" }}
+            <a href="{% url 'bibliothecaire:delete_member' member.id %}">Supprimer</a>
+             <a href="{% url 'bibliothecaire:update_member' member.id %}">Mettre à jour</a>
+        </li>
+    {% empty %}
+        <li>Aucun membre trouvé.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'bibliothecaire:create_member' %}">Créer un membre</a>
+
+</body>
+</html>

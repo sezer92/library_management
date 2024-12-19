@@ -1,9 +1,18 @@
 from django.test import TestCase
-from .models import Member
+from bibliothecaire.models import Member
 
 class MemberTestCase(TestCase):
     def setUp(self):
         self.member = Member.objects.create(name="John Doe")
+
+    def test_can_borrow(self):
+        self.assertTrue(self.member.can_borrow())
+        self.member.borrow_count = 3
+        self.member.save()
+        self.assertFalse(self.member.can_borrow())
+        self.member.blocked = True
+        self.member.save()
+        self.assertFalse(self.member.can_borrow())
 
     def test_create_member(self):
         member = Member.objects.get(name="John Doe")

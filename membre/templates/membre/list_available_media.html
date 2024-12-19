@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Media</title>
+</head>
+<body>
+    <h1>Available Media for Members</h1>
+
+    <h2>Books</h2>
+<ul>
+    {% for book in books %}
+        <li>{{ book.name }} - Author: {{ book.author }}
+         <a href="{% url 'bibliothecaire:create_borrow' book.id %}">Emprunter</a></li>
+    {% empty %}
+        <li>No books available.</li>
+    {% endfor %}
+</ul>
+
+<h2>CDs</h2>
+<ul>
+    {% for cd in cds %}
+        <li>{{ cd.name }} - Artist: {{ cd.artist }}
+         <a href="{% url 'bibliothecaire:create_borrow' cd.id %}">Emprunter</a></li>
+    {% empty %}
+        <li>No CDs available.</li>
+    {% endfor %}
+</ul>
+
+<h2>DVDs</h2>
+<ul>
+    {% for dvd in dvds %}
+        <li>{{ dvd.name }} - Director: {{ dvd.director }}
+         <a href="{% url 'bibliothecaire:create_borrow' dvd.id %}">Emprunter</a></li>
+    {% empty %}
+        <li>No DVDs available.</li>
+    {% endfor %}
+</ul>
+
+<h2>Board Games</h2>
+<ul>
+    {% for boardgame in boardgames %}
+        <li>{{ boardgame.name }} - Creator: {{ boardgame.creator }}
+         <a href="{% url 'bibliothecaire:create_borrow' boardgame.id %}">Emprunter</a></li>
+    {% empty %}
+        <li>No board games available.</li>
+    {% endfor %}
+</ul>
+
+
+</body>
+</html>

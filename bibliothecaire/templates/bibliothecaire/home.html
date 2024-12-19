@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Accueil de l'application Bibliothécaire</h1>
+
+    <div class="list-group">
+        <a href="{% url 'bibliothecaire:create_member' %}" class="list-group-item list-group-item-action">
+            Créer un membre
+        </a> <br>
+        <a href="{% url 'bibliothecaire:list_members' %}" class="list-group-item list-group-item-action">
+            Liste des membres
+        </a><br>
+        <a href="{% url 'bibliothecaire:list_media' %}" class="list-group-item list-group-item-action">
+            Liste des médias
+        </a><br>
+        <a href="{% url 'bibliothecaire:create_borrow' 1 %}" class="list-group-item list-group-item-action">
+            Créer un emprunt pour un média
+        </a><br>
+        <a href="{% url 'bibliothecaire:add_media' %}" class="list-group-item list-group-item-action">
+            Ajouter un média
+        </a><br>
+        <a href="{% url 'bibliothecaire:return_borrow' 1 %}" class="list-group-item list-group-item-action">
+            Rentrer un emprunt
+        </a>
+    </div>
+</div>
+</body>
+</html>

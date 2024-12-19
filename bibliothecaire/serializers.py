@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Member, Book, Cd, Dvd, BoardGame
+from bibliothecaire.models import Member, Book, Cd, Dvd, BoardGame
 
 class MemberSerializer(serializers.ModelSerializer):
     class Meta:

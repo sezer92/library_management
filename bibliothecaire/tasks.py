@@ -1,6 +1,6 @@
 from celery import shared_task
 from django.utils import timezone
-from .models import Member
+from bibliothecaire.models import Member
 
 @shared_task
 def check_overdue_members():
@@ -9,4 +9,3 @@ def check_overdue_members():
             member.blocked = True
             member.save()
             print(f"Member {member.name} has been blocked due to overdue borrows.")
-

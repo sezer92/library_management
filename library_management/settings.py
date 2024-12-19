@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'management',
     'rest_framework',
+    'bibliothecaire',
+    'membre'
 ]
 
 MIDDLEWARE = [
